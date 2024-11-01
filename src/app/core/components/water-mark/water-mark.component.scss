@@ -1,0 +1,30 @@
+.watermark-container {
+  width: 50vw;
+  margin: auto;
+  margin-top: 40px;
+  height: calc(100% - 40px);
+  background-color: transparent;
+  position: absolute;
+}
+.watermark {
+  position: absolute;
+  top: 15%;
+  left: 150px;
+  transform: rotateZ(-45deg);
+  font-size: 30px;
+  color: rgba(128, 128, 128, 0.393);
+}
+.watermark:nth-child(2),
+.watermark:nth-child(5) {
+  top: 45%;
+}
+.watermark:nth-child(3),
+.watermark:nth-child(6) {
+  top: 80%;
+}
+.watermark:nth-child(1),
+.watermark:nth-child(2),
+.watermark:nth-child(3) {
+  left: unset;
+  right: 150px;
+}

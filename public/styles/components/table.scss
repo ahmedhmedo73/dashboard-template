@@ -1,0 +1,57 @@
+.p-treetable-wrapper table,
+table.data-table {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  padding: 1px;
+
+  thead {
+    background-color: #f4f6f8 !important;
+    border-radius: 5px 5px 0px 0px;
+    color: $white;
+
+    th {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 29px;
+      padding-left: 20px;
+      color: #9c9c9c;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27.04px;
+      text-wrap: nowrap;
+      background: unset;
+      text-align: start;
+    }
+  }
+
+  tbody {
+    td {
+      padding-right: 29px;
+      border-bottom: 1px solid $table-border;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 27.04px;
+      max-width: 400px;
+      word-wrap: break-word;
+    }
+  }
+}
+p-treetable.loading {
+  table {
+    height: 300px;
+  }
+}
+.p-treetable .p-treetable-tbody > tr > td {
+  text-align: right;
+}
+tr.p-element:not([aria-level="2"]):not(:last-child) {
+  border-bottom: 1px solid #c1c1c1;
+}
+
+.modal-dialog {
+  min-width: 250px;
+  .modal-content {
+    background: #fff;
+  }
+}

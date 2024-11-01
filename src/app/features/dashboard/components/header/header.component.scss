@@ -1,0 +1,61 @@
+@import "./../../../../../../public/styles/theme";
+header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 3px rgba($gray, 0.4);
+  background: $white;
+  z-index: 9;
+}
+.navbar {
+  margin-inline-start: 290px;
+  padding: 20px 50px 20px 60px !important;
+  .active {
+    @media (max-width: $responsive-breakPoint) {
+      display: block;
+    }
+  }
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  span {
+    margin: 0 10px;
+    background: #a1a1a1;
+    width: 1px;
+    height: 35px;
+  }
+}
+
+.user-dropdown-wrapper {
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.logged-in-user {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  cursor: pointer;
+  height: 49px;
+  .user-image-wrapper {
+    width: 42px;
+    height: 42px;
+  }
+}
+.user-name {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 25.35px;
+  color: black;
+}
+.user-role {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20.28px;
+}

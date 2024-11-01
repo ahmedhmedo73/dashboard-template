@@ -1,0 +1,62 @@
+{
+  "dir": "rtl",
+  "lang": "EN",
+  "LOGIN": {
+    "TITLE": "تسجيل الدخول",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "LOGIN_BUTTON": "تسجيل الدخول",
+    "COPYRIGHT": "جميع الحقوق محفوظة لشركة العرض المتقن © 2024",
+    "USERNAME_MIN_LENGTH": "يجب إدخال 3 احرف علي الأقل"
+  },
+  "USER_MANAGEMENT": {
+    "PAGE_TITLE": "قائمة ادارة المستخدمين",
+    "ADD_USER_TITLE": "إضافة مستخدم",
+    "SEARCH_PLACEHOLDER": "البحث باسم المستخدم ,رقم الهوية, البريد الإلكتروني ,رقم الجوال",
+    "DELETE_CONFIRMATION": "هل أنت متأكد من حذف المستخدم من النظام؟"
+  },
+  "menuSidebar": {
+    "usersManagement": "ادارة المستخدمين",
+    "services": "الخدمات",
+    "aboutUs": "من نحن"
+  },
+  "BUTTONS": {
+    "SAVE_DATA": "حفظ البيانات",
+    "CANCEL": "إلغاء"
+  },
+  "VALIDATION": {
+    "REQUIRED": "الحقل مطلوب",
+    "INVALID_EMAIL": "يرجى كتابة البريد الإلكتروني بطريقة صحيحة",
+    "PATTERN": "{{patternMessage}}",
+    "MAX_LENGTH": "{{label}} يجب ألا يتجاوز {{maxLength}} {{type}}",
+    "MIN_LENGTH": "{{label}} يجب ألا يقل عن {{minLength}} {{type}}",
+    "LENGTH": "{{label}} يجب أن يكون {{requiredLength}} {{type}}",
+    "STARTS_WITH_05": "{{label}} يجب أن يبدأ ب 5",
+    "STARTS_WITH_1_OR_2": "{{label}} يجب أن يبدأ ب 1 أو 2",
+    "NUMBERS": "أرقام",
+    "CHARACTERS": "أحرف"
+  },
+  "FORM": {
+    "NAME_LABEL": "الاسم كامل",
+    "NAME_PLACEHOLDER": "الاسم كامل",
+    "ENTITY_TYPE_LABEL": "الجهة",
+    "ENTITY_TYPE_PLACEHOLDER": "الجهة",
+    "IDENTITY_NUMBER_LABEL": "رقم الهوية",
+    "IDENTITY_NUMBER_PLACEHOLDER": "رقم الهوية",
+    "EMAIL_LABEL": "البريد الإلكتروني",
+    "EMAIL_PLACEHOLDER": "البريد الإلكتروني",
+    "MOBILE_NUMBER_LABEL": "رقم الجوال",
+    "MOBILE_NUMBER_PLACEHOLDER": "رقم الجوال",
+    "NOTES_LABEL": "مبررات منح الصلاحية",
+    "NOTES_PLACEHOLDER": "مبررات منح الصلاحية",
+    "NAME_PATTERN_MESSAGE": "الرجاء إدخال اسم يحتوي فقط على حروف ومسافات"
+  },
+  "SEARCH_PLACEHOLDER": "البحث",
+  "COLUMN_ROW_NUMBER": "م",
+  "COLUMN_NAME": "الإسم",
+  "COLUMN_EMAIL": "البريد الإلكتروني",
+  "COLUMN_MOBILE_NUMBER": "رقم الجوال",
+  "COLUMN_ENTITY_TYPE": "الجهة",
+  "COLUMN_IS_ACTIVE": "التفعيل",
+  "COLUMN_ACTIONS": "الإجراء"
+}

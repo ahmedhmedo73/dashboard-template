@@ -1,0 +1,28 @@
+<div class="page-header my-3 mb-4" [class.with-border]="withBorder">
+  <div class="flex items-center gap-2">
+    <a *ngIf="backLink" aria-current="page" [routerLink]="backLink">
+      <img src="img/icons/arrow-right-square.svg" alt="الصفحة السابقة" />
+    </a>
+
+    <h1 class="text-secondary">{{ title }}</h1>
+
+    <ng-content select="[badge]"></ng-content>
+  </div>
+  <div class="flex items-center justify-end gap-3">
+    <app-table-search
+      *ngIf="!hideSearch"
+      [placeholder]="placeholder"
+      (onSearch)="onSearch($event)"
+    ></app-table-search>
+    @if ( !hideAddBtn ) {
+    <a
+      aria-current="page"
+      [routerLink]="url + '/add'"
+      class="bg-main text-white font-semibold p-3 rounded-md hover:opacity-80 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex gap-2"
+    >
+      <img class="ms-1" src="img/icons/plus.svg" [alt]="addTitle" />
+      {{ addTitle }}
+    </a>
+    }
+  </div>
+</div>

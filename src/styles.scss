@@ -1,0 +1,228 @@
+@import "../public/styles/theme/variables.scss";
+@import "../public/styles/theme/utils.scss";
+@import "../public/styles/components/index.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  overflow: hidden;
+  font-family: "droid";
+  margin: 0;
+  padding: 0;
+  font-family: "droid";
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  outline: none;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+.container {
+  @media (min-width: 1600px) {
+    max-width: 1480px;
+  }
+}
+
+.badge {
+  padding: 0 5px;
+  font-size: 18px;
+  &.primary {
+    color: $primary;
+    background-color: $ternary;
+    border-radius: 5px;
+    border: $secondary 1px solid;
+  }
+
+  &.black {
+    background: black;
+    line-height: 2;
+    color: white;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 250px);
+  p {
+    color: $light;
+    max-width: 500px;
+    text-align: center;
+    margin: 15px 0;
+  }
+}
+.p-datepicker {
+  width: 320px;
+  min-width: 320px;
+  height: fit-content;
+  direction: ltr;
+  min-height: 320px;
+}
+.p-datepicker table td {
+  padding: 3px;
+}
+.p-datepicker table td > span {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.p-datepicker table td:not(.p-datepicker-other-month) > span {
+  color: $primary;
+}
+.p-input-icon-right > .p-inputtext {
+  padding-right: 1rem;
+  padding-left: 2.5rem;
+  cursor: pointer;
+}
+.p-highlight {
+  background-color: $secondary;
+  color: white !important;
+}
+.p-datepicker-today .p-element {
+  background-color: $light-secondary;
+  color: white !important;
+}
+.p-input-icon-right > i:last-of-type {
+  right: unset;
+  left: 0.75rem;
+  top: 18px;
+}
+.p-image-toolbar,
+.p-inputotp {
+  direction: ltr;
+}
+.p-inputtext {
+  background: $gray-2 !important;
+}
+.p-inputotp-input {
+  width: 60px !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-control-file {
+  cursor: pointer;
+  .title {
+    font-size: 13px !important;
+    font-weight: 400;
+    line-height: 20.66px;
+    color: #23282d;
+  }
+  .sub-title {
+    font-size: 11px !important;
+    font-weight: 400;
+    line-height: 20.28px;
+    color: #64696e;
+  }
+}
+.p-radiobutton-box.p-highlight {
+  background-color: white;
+}
+.p-radiobutton-icon {
+  background-color: $secondary;
+}
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: #d9d9d9;
+  background: #d9d9d9;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
+  border-color: #d9d9d9;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  box-shadow: none;
+}
+input[type="password"] {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.country-dropdown {
+  .p-inputtext {
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+  }
+  .p-dropdown-label {
+    padding: 9px 5px 9px 0px;
+  }
+  .p-dropdown-trigger {
+    background-color: #f4f6f8 !important;
+    width: 23px !important;
+    border-radius: 6px;
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+  }
+  .p-highlight {
+    .iti__dial-code {
+      color: #c3c5c7 !important;
+    }
+  }
+}
+.p-dropdown-panel {
+  direction: ltr;
+  width: 450px;
+}
+.saudi-country-code {
+  position: relative;
+  &::before {
+    content: "966+";
+    position: absolute;
+    color: #999999;
+    font-weight: bold;
+    width: 10px;
+    height: 100%;
+    left: 40px;
+    top: 10px;
+  }
+}
+.table-print {
+  tr:nth-child(22n + 15) {
+    td {
+      padding-top: 80px;
+    }
+  }
+}
+p-dropdown {
+  width: 100%;
+}
+p-dropdown p-component,
+.p-dropdown-trigger {
+  background-color: #f4f6f8 !important;
+}
+[dir="rtl"] {
+  .sidebar {
+    right: 0;
+    left: unset;
+  }
+  .search-btn {
+    left: 10px;
+    right: unset !important;
+  }
+  .home-section {
+    right: 150px;
+    left: unset;
+  }
+  .p-dropdown .p-dropdown-clear-icon {
+    right: unset;
+    left: 3rem;
+  }
+}

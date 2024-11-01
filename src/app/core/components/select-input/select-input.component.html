@@ -1,0 +1,39 @@
+<div class="w-full flex flex-col">
+  <label class="form-label w-full" [for]="control">
+    {{ label | translate }}
+    <span *ngIf="addRequiredAstrect" class="text-danger">*</span>
+  </label>
+  <p-dropdown
+    [options]="options"
+    [formControlName]="controlName"
+    [disabled]="readonly"
+    [filter]="searchable"
+    [placeholder]="placeholder | translate"
+    [showClear]="clearable"
+    [styleClass]="
+      'w-full ' +
+      ((submitted && control.errors) ||
+      (control.errors && (control.dirty || control.touched))
+        ? 'is-invalid'
+        : '')
+    "
+    panelStyleClass="w-full"
+    [emptyMessage]="'لا توجد نتائج'"
+  >
+    <ng-template let-item pTemplate="item">
+      <span>{{ item[key] }}</span>
+    </ng-template>
+  </p-dropdown>
+
+  <div
+    class="invalid-feedback"
+    *ngIf="control?.errors && (control?.dirty || control?.touched)"
+  >
+    <div [ngSwitch]="getFirstError()">
+      <span *ngSwitchCase="'required'">الحقل مطلوب</span>
+      <span *ngSwitchCase="'pattern'">
+        {{ patternMessage }}
+      </span>
+    </div>
+  </div>
+</div>

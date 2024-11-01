@@ -1,0 +1,21 @@
+.info-tabset-wrapper {
+  .nav-pills {
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+
+    li a {
+      font-size: 24px;
+    }
+  }
+}
+
+.tab-header-img {
+  height: 253px;
+  overflow: hidden;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  img {
+    object-fit: cover !important;
+  }
+}

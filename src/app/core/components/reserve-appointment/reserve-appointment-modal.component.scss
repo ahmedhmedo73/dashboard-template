@@ -1,0 +1,34 @@
+
+.modal-dialog {
+  width: 611px;
+  max-width: 611px;
+}
+.modal-header {
+  border-bottom: 0;
+  h1 {
+    color: $secondary;
+  }
+}
+
+.modal-body {
+  padding-top: 0;
+  padding-bottom: 0;
+  h1 {
+    color: $primary;
+  }
+}
+
+.modal-title {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 42.25px;
+}
+
+.modal-footer {
+  border-top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}

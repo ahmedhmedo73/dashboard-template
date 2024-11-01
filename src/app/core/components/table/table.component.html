@@ -1,0 +1,171 @@
+<div class="container-fluid overflow-x-auto p-0">
+  <table
+    class="table-auto data-table w-full mb-4 border-collapse border border-gray-300"
+  >
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th
+          *ngFor="let col of columns"
+          class="px-4 py-2 text-left border-b border-gray-300"
+        >
+          {{ col.title | translate }}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="!isLoading">
+      <ng-container *ngIf="!tableContent">
+        <tr
+          *ngFor="
+            let row of rows
+              | paginate
+                : {
+                    itemsPerPage: filter.pageSize,
+                    currentPage: filter.pageNumber,
+                    totalItems: totalCount
+                  };
+            let i = index
+          "
+          class="hover:bg-gray-50 transition-colors"
+        >
+          <td
+            *ngFor="let col of columns"
+            class="px-4 py-2 border-b border-gray-300"
+          >
+            <div [ngSwitch]="col.key">
+              <!-- Switch cases for different cell types -->
+              <div
+                *ngSwitchCase="'downloadImage'"
+                class="cursor-pointer py-3 text-center"
+              >
+                <img
+                  src="img/icons/download-file.svg"
+                  alt="Download"
+                  (click)="handleDownLoadImage(row)"
+                />
+              </div>
+              <div *ngSwitchCase="'licenceNumber'" class="flex justify-start">
+                <span dir="ltr" class="text-nowrap">{{
+                  row[col.key]?.join(" ")
+                }}</span>
+              </div>
+              <div
+                *ngSwitchCase="'totalNumberOfPermits'"
+                class="flex justify-start"
+              >
+                <span class="text-gray-600">{{ row[col.key] }}</span> /
+                <span>{{ row["numberOfPermits"] }}</span>
+              </div>
+              <div *ngSwitchCase="'rowNumber'" class="flex justify-start">
+                <span>{{ calculateSerialNumber(i) }}</span>
+              </div>
+              <div *ngIf="col.key.includes('+')">
+                {{ shouldCombining(col.key, row) }}
+              </div>
+              <div *ngSwitchCase="'isActive'" class="flex justify-start">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    id="flexSwitchCheckChecked"
+                    [checked]="getValue(row, col.key)"
+                    (change)="changeActivation(row.id, row.isActive)"
+                  />
+                </div>
+              </div>
+              <div *ngSwitchCase="'actions'">
+                <div class="flex gap-2">
+                  <a
+                    class="btn btn-transparent p-2"
+                    [routerLink]="url + '/edit/' + row.id"
+                  >
+                    <img src="img/icons/edit.svg" alt="Edit" />
+                  </a>
+                  <a
+                    *ngIf="!hideDelete"
+                    class="btn btn-transparent p-2"
+                    (click)="openDeleteModal(row.id)"
+                  >
+                    <img src="img/icons/trash.svg" alt="Delete" />
+                  </a>
+                </div>
+              </div>
+              <div *ngSwitchCase="'details'">
+                <div class="flex">
+                  <a
+                    class="btn btn-transparent p-2"
+                    [routerLink]="url + '/details/' + row.id"
+                  >
+                    <img src="../../../../img/icons/view.svg" alt="" />
+                  </a>
+                </div>
+              </div>
+              <div *ngSwitchDefault>
+                <span>{{
+                  col.key.includes("date")
+                    ? formatDate(row[col.key])
+                    : row[col.key]
+                }}</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-content *ngIf="tableContent"></ng-content>
+    </tbody>
+
+    <tbody *ngIf="isLoading">
+      <tr>
+        <td class="text-center py-10" colspan="10">
+          <div class="spinner-border text-primary" role="status"></div>
+        </td>
+      </tr>
+    </tbody>
+
+    <tbody *ngIf="!isLoading && rows.length === 0">
+      <tr>
+        <td class="text-center py-5" colspan="10">
+          <p class="text-gray-500">لا توجد بيانات</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="flex justify-end mt-4">
+  <pagination-template
+    #p="paginationApi"
+    class="pagination"
+    (pageChange)="changePagination($event)"
+    *ngIf="rows.length < totalCount && rows.length !== 0 && !isLoading"
+  >
+    <li class="page-item" [class.disabled]="p.isFirstPage()">
+      <a class="page-link" (click)="p.previous()">
+        <img src="img/icons/arrow-left.svg" alt="Previous" />
+      </a>
+    </li>
+
+    <li
+      class="page-item"
+      *ngFor="let page of p.pages"
+      [class.current]="p.getCurrent() === page.value"
+    >
+      <a
+        (click)="p.setCurrent(page.value)"
+        *ngIf="p.getCurrent() !== page.value"
+        class="page-link"
+      >
+        <span>{{ page.label }}</span>
+      </a>
+      <span class="page-link active" *ngIf="p.getCurrent() === page.value">
+        {{ page.label }}
+      </span>
+    </li>
+
+    <li class="page-item" [class.disabled]="p.isLastPage()">
+      <a class="page-link" (click)="p.next()">
+        <img src="img/icons/arrow-left.svg" alt="Next" />
+      </a>
+    </li>
+  </pagination-template>
+</div>

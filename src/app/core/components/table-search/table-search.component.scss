@@ -1,0 +1,32 @@
+.info-icon {
+  width: 20px;
+  height: 20px;
+}
+.form-group {
+  margin-inline-end: 10px;
+  position: relative;
+  .form-control {
+    height: 48px;
+    &::placeholder {
+      font-size: 13px !important;
+      font-weight: 400;
+      line-height: 21.97px;
+      color: #bbbbbb;
+    }
+  }
+}
+.search-btn {
+  background: url(../../../../../public/img/icons/search.svg) no-repeat;
+  background-position: center;
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 27px;
+}
+
+.search-input {
+  width: 460px;
+}

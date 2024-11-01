@@ -1,0 +1,104 @@
+.img-wrapper {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.text-gray {
+  color: $gray;
+}
+.text-light-primary {
+  color: $light-primary;
+}
+
+.bg-gray-2 {
+  background-color: $gray-2 !important;
+}
+
+.vertical-line {
+  margin: 0 10px;
+  background: #a1a1a1;
+  width: 1px;
+  height: 35px;
+}
+
+.mb-32px {
+  margin-bottom: 32px !important;
+}
+.w-425px {
+  width: 425px;
+}
+.w-60px {
+  width: 60px;
+}
+.w-90px {
+  width: 90px;
+}
+.w-930px {
+  width: 930px;
+}
+.vh-87 {
+  height: 87vh;
+}
+.fs-14px {
+  font-size: 14px;
+}
+.bg-lime {
+  background-color: $lime !important;
+}
+.bg-light-secondary-2 {
+  background-color: $light-secondary-2 !important;
+}
+.text-light-green {
+  color: $light-green !important;
+}
+.text-light-gray-2 {
+  color: $light-gray-2 !important;
+}
+.text-gray-3 {
+  color: $gray-3 !important;
+}
+.form-label {
+  font-weight: 400 !important;
+  font-size: 16px;
+  line-height: 27.04px;
+  color: #8e8e8e !important;
+}
+.form-control::placeholder,
+.ng-placeholder {
+  color: $light !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 27.04px !important;
+}
+.btn-cancel {
+  width: 145px;
+  height: 48px;
+  padding: 16px;
+  gap: 8px;
+  border-radius: 8px;
+  opacity: 0px;
+  background-color: #fbeaec;
+  color: #d82b3f;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.form-control.bg-gray-2,
+.ng-select-container {
+  border: 1px solid #dbdddf;
+}
+.ng-select-container {
+  background-color: $gray-2 !important;
+  height: 45px !important;
+}
+.border-black-1 {
+  border: 1px solid #0000004d !important;
+}

@@ -1,0 +1,62 @@
+{
+  "dir": "ltr",
+  "lang": "ع",
+  "LOGIN": {
+    "TITLE": "Login",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "LOGIN_BUTTON": "Login",
+    "COPYRIGHT": "All rights reserved by 2P Perfect Presentation © 2024",
+    "USERNAME_MIN_LENGTH": "Must be at least 3 characters"
+  },
+  "USER_MANAGEMENT": {
+    "PAGE_TITLE": "User Management List",
+    "ADD_USER_TITLE": "Add User",
+    "SEARCH_PLACEHOLDER": "Search by username, ID number, email, or mobile number",
+    "DELETE_CONFIRMATION": "Are you sure you want to delete the user from the system?"
+  },
+  "menuSidebar": {
+    "usersManagement": "User Management",
+    "services": "Services",
+    "aboutUs": "About Us"
+  },
+  "BUTTONS": {
+    "SAVE_DATA": "Save Data",
+    "CANCEL": "Cancel"
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required",
+    "INVALID_EMAIL": "Please enter a valid email address",
+    "PATTERN": "{{patternMessage}}",
+    "MAX_LENGTH": "{{label}} should not exceed {{maxLength}} {{type}}",
+    "MIN_LENGTH": "{{label}} should not be less than {{minLength}} {{type}}",
+    "LENGTH": "{{label}} should be {{requiredLength}} {{type}}",
+    "STARTS_WITH_05": "{{label}} must start with 5",
+    "STARTS_WITH_1_OR_2": "{{label}} must start with 1 or 2",
+    "NUMBERS": "numbers",
+    "CHARACTERS": "characters"
+  },
+  "FORM": {
+    "NAME_LABEL": "Full Name",
+    "NAME_PLACEHOLDER": "Full Name",
+    "ENTITY_TYPE_LABEL": "Entity",
+    "ENTITY_TYPE_PLACEHOLDER": "Entity",
+    "IDENTITY_NUMBER_LABEL": "Identity Number",
+    "IDENTITY_NUMBER_PLACEHOLDER": "Identity Number",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "Email",
+    "MOBILE_NUMBER_LABEL": "Mobile Number",
+    "MOBILE_NUMBER_PLACEHOLDER": "Mobile Number",
+    "NOTES_LABEL": "Justifications for Granting Authority",
+    "NOTES_PLACEHOLDER": "Justifications for Granting Authority",
+    "NAME_PATTERN_MESSAGE": "Please enter a name that contains only letters and spaces"
+  },
+  "SEARCH_PLACEHOLDER": "Search",
+  "COLUMN_ROW_NUMBER": "No.",
+  "COLUMN_NAME": "Name",
+  "COLUMN_EMAIL": "Email",
+  "COLUMN_MOBILE_NUMBER": "Mobile Number",
+  "COLUMN_ENTITY_TYPE": "Entity",
+  "COLUMN_IS_ACTIVE": "Active",
+  "COLUMN_ACTIONS": "Actions"
+}

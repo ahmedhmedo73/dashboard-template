@@ -1,0 +1,86 @@
+<form [formGroup]="formGroup">
+  <div class="form-group">
+    <label class="form-label" for="mobileNumber">
+      {{ label }}
+      <span *ngIf="addRequiredAstrect" class="text-danger">*</span>
+    </label>
+    <div class="input-container w-100">
+      <div class="flex gap-1">
+        <input
+          id="mobileNumber"
+          [style]="style"
+          class="form-control bg-gray-2 text-right"
+          [ngClass]="{ 'text-muted': !readonly }"
+          [formControlName]="mobileNumberControlName"
+          (ngModelChange)="onChange()"
+          [readonly]="readonly"
+          [placeholder]="placeholder"
+          [maxlength]="phoneNumberLength"
+          [class.is-invalid]="
+            submitted &&
+            mobileNumberControl.touched &&
+            mobileNumberControl.invalid
+          "
+          [numbersOnly]="true"
+        />
+        <p-dropdown
+          class="custom-search country-dropdown dir-ltr"
+          [filter]="true"
+          filterBy="name"
+          [(ngModel)]="selectedCountry"
+          (ngModelChange)="onCountryChange()"
+          [ngModelOptions]="{ standalone: true }"
+          [readonly]="readonly"
+          [options]="filteredCountries"
+        >
+          <ng-template pTemplate="filter" let-options="options">
+            <div class="p-inputgroup" (click)="$event.stopPropagation()">
+              <input
+                type="text"
+                pInputText
+                placeholder="ابحث باسم أو كود الدولة"
+                [(ngModel)]="countryCodefilterValue"
+                (ngModelChange)="customFilterFunction()"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </ng-template>
+          <ng-template pTemplate="selectedItem">
+            <div class="flex items-center gap-2" *ngIf="selectedCountry">
+              <div class="iti__flag-box">
+                <div
+                  class="iti__flag"
+                  [ngClass]="selectedCountry.flagClass"
+                ></div>
+              </div>
+              <p class="iti__dial-code m-0">+{{ selectedCountry.dialCode }}</p>
+            </div>
+          </ng-template>
+          <ng-template let-country pTemplate="item">
+            <div class="flex gap-1 items-center">
+              <div class="iti__flag-box">
+                <div class="iti__flag" [ngClass]="country.flagClass"></div>
+              </div>
+              <p class="iti__country-name m-0">{{ country.name }}</p>
+              <p class="iti__dial-code m-0">+{{ country.dialCode }}</p>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div
+        class="invalid-feedback flex gap-2"
+        *ngIf="
+          mobileNumberControl?.errors &&
+          (mobileNumberControl?.dirty || mobileNumberControl?.touched)
+        "
+      >
+        <div [ngSwitch]="mobileNumberControlError">
+          <span *ngSwitchCase="'required'">الحقل مطلوب</span>
+          <span *ngSwitchCase="'pattern'">
+            يرجى كتابة رقم الجوال بطريقة صحيحة
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

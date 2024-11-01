@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="relative flex items-center gap-2">
+  <img
+    src="img/icons/information.png"
+    alt="info"
+    [pTooltip]="placeholder"
+    tooltipEvent="hover"
+    tooltipPosition="top"
+    class="info-icon"
+  />
+
+  <app-text-input
+    controlName="searchKeyword"
+    label=""
+    (onkeydownEnter)="onSearch()"
+    [maxLength]="50"
+    [minLength]="1"
+    [placeholder]="'SEARCH_PLACEHOLDER' | translate"
+  ></app-text-input>
+
+  <button
+    class="btn search-btn p-0"
+    alt="search-btn"
+    type="button"
+    (click)="onSearch()"
+  ></button>
+</form>

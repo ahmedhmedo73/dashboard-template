@@ -1,0 +1,7 @@
+<div class="statistic-box mt-4" *ngIf="statistic">
+  <div class="w-100 flex justify-content-between items-center">
+    <p class="title p-0 m-0">{{ statistic.name }}</p>
+    <img [src]="getIconSrc()" class="statisticIcon" alt="statisticIcon" />
+  </div>
+  <p class="number p-0 m-0">{{ statistic.count }}</p>
+</div>

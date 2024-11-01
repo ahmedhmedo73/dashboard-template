@@ -1,0 +1,12 @@
+<app-page-header
+  [withBorder]="false"
+  [title]="title"
+  [hideAddBtn]="true"
+  [hideSearch]="true"
+></app-page-header>
+<app-generic-form
+  [form]="form"
+  [formConfig]="formConfig"
+  [isLoading]="isLoading"
+  (formSubmit)="onSubmit()"
+></app-generic-form>

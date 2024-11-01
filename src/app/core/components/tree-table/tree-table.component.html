@@ -1,0 +1,170 @@
+<div class="container-fluid overflow-x-auto p-0">
+  <p-treeTable
+    [value]="formatedData"
+    styleClass="p-treetable-sm"
+    [loading]="isLoading"
+    [ngClass]="{ loading: isLoading }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th
+          *ngFor="let col of columns[0]"
+          [ngClass]="{ 'w-90px': col.key === 'rowNumber' }"
+        >
+          {{ col.title }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template
+      pTemplate="body"
+      let-rowNode
+      let-index="index"
+      let-rowData="rowData"
+    >
+      <tr
+        [ttRow]="rowNode"
+        *ngIf="!isLoading && columns.length > 0 && formatedData.length > 0"
+      >
+        <ng-container *ngIf="rowNode.level === 0">
+          <td *ngFor="let col of columns[0]; let first = first">
+            <div [ngSwitch]="col.key" class="flex items-center gap-2">
+              <p-treeTableToggler [rowNode]="rowNode" *ngIf="first" />
+              <div
+                *ngSwitchCase="'rowNumber'"
+                class="w-90px flex justify-content-start"
+              >
+                <span>{{ calculateSerialNumber(rowData.index) }}</span>
+              </div>
+              <div
+                *ngSwitchCase="'licenceNumber'"
+                class="w-100 flex justify-content-start"
+              >
+                <span dir="ltr">{{ rowData[col.key]?.join(" ") }}</span>
+              </div>
+              <div
+                *ngSwitchCase="'permitNumber'"
+                class="w-100 flex justify-content-start"
+              >
+                <input
+                  type="text"
+                  (change)="handelAddValuePermitVehicles($event, rowData.index)"
+                  [value]="getValue(rowData, col.key)"
+                  maxlength="20"
+                  [disabled]="isReadonly"
+                  class="w-100"
+                />
+              </div>
+              <div *ngSwitchCase="'vehiclesActions'">
+                <div class="flex">
+                  <a class="btn btn-transparent" (click)="editRow(rowData)">
+                    <img src="img/icons/edit.svg" alt="" />
+                  </a>
+                  <a
+                    class="btn btn-transparent"
+                    (click)="openDeleteModal(rowData.id)"
+                  >
+                    <img src="img/icons/trash.svg" alt="" />
+                  </a>
+                </div>
+              </div>
+              <div *ngSwitchCase="'downloadImage'" class="cursor-pointer">
+                <img
+                  src="img/icons/download-file.svg"
+                  alt=""
+                  (click)="handleDownLoadImage(rowData)"
+                />
+              </div>
+              <div *ngSwitchDefault>
+                {{
+                  col.key.includes("date")
+                    ? formatDate(rowData[col.key])
+                    : rowData[col.key]
+                }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container *ngIf="rowNode.level === 1">
+          <td *ngFor="let col of columns[1]">
+            <div class="flex flex-column">
+              <span class="text-black fw-bold">{{ col.title }}</span>
+              <div [ngSwitch]="col.key">
+                <div *ngSwitchCase="'vehicleFormTypeId'">
+                  {{ rowNode.node[col.key] | vehicleFormType }}
+                </div>
+                <div
+                  *ngSwitchCase="'licenceNumber'"
+                  class="w-100 flex justify-content-start"
+                >
+                  <span dir="ltr">{{ rowNode.node[col.key]?.join(" ") }}</span>
+                </div>
+                <div *ngSwitchDefault>
+                  {{
+                    col.key.includes("date")
+                      ? formatDate(rowNode.node[col.key], false)
+                      : rowNode.node[col.key]
+                  }}
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-template>
+  </p-treeTable>
+</div>
+<div *ngIf="data.length == 0 && !isLoading">
+  <p class="text-center my-5">لا توجد بيانات</p>
+</div>
+<div class="flex justify-end w-100 mt-4">
+  <pagination-template
+    #p="paginationApi"
+    class="pagination"
+    (pageChange)="changePagination($event)"
+    *ngIf="data.length < totalCount && data.length != 0 && !isLoading"
+  >
+    <li class="page-item" [class.disabled]="p.isFirstPage()">
+      <a class="page-link" (click)="p.previous()">
+        <img src="img/icons/arrow-left.svg" alt="arrow-left" />
+      </a>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="
+        let page of p.pages
+          | paginate
+            : {
+                itemsPerPage: filter.pageSize,
+                currentPage: filter.pageNumber,
+                totalItems: totalCount
+              };
+        let i = index
+      "
+      [class.current]="p.getCurrent() === page.value"
+    >
+      <a
+        (click)="p.setCurrent(page.value)"
+        *ngIf="p.getCurrent() !== page.value"
+        class="page-link"
+      >
+        <span>{{ page.label }}</span>
+      </a>
+      <a class="page-link active" *ngIf="p.getCurrent() === page.value">
+        <span>{{ page.label }}</span>
+      </a>
+    </li>
+
+    <li class="page-item" [class.disabled]="p.isLastPage()">
+      <a class="page-link" (click)="p.next()">
+        <img src="img/icons/arrow-left.svg" alt="arrow-left" />
+      </a>
+    </li>
+  </pagination-template>
+</div>
+
+<app-modal
+  *ngIf="!hideDelete"
+  modalId="removeItem"
+  [title]="deleteTitle"
+  (deleteBtnClicked)="deleteItem()"
+/>

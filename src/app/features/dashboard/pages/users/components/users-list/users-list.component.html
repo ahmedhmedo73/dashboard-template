@@ -1,0 +1,18 @@
+<app-page-header
+  [withBorder]="false"
+  [title]="'USER_MANAGEMENT.PAGE_TITLE' | translate"
+  [placeholder]="'USER_MANAGEMENT.SEARCH_PLACEHOLDER' | translate"
+  [addTitle]="'USER_MANAGEMENT.ADD_USER_TITLE' | translate"
+  [filter]="currentFilter"
+></app-page-header>
+
+<app-table
+  [columns]="columns"
+  [rows]="items"
+  [isLoading]="isLoading"
+  [totalCount]="totalCount"
+  [filter]="currentFilter"
+  [deleteTitle]="'USER_MANAGEMENT.DELETE_CONFIRMATION' | translate"
+  (openDeleteModal)="openDeleteModal($event)"
+  (deleteItem)="deleteItem($event)"
+></app-table>

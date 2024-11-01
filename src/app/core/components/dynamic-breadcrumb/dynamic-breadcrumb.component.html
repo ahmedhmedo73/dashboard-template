@@ -1,0 +1,19 @@
+<div class="flex gap-3 items-center">
+  <div
+    *ngFor="let breadcrumb of breadcrumbs; let i = index"
+    class="breadcrumb flex gap-3"
+  >
+    <a [routerLink]="breadcrumb.route" class="flex gap-3">
+      <img
+        *ngIf="breadcrumb.icon"
+        [src]="iconBaseUrl + breadcrumb.icon"
+        alt="breadcrumb.title"
+      />
+      <p class="m-0" [ngClass]="{ 'text-gray-3': i != breadcrumbs.length - 1 }">
+        {{ breadcrumb.title }}
+      </p>
+    </a>
+
+    <span *ngIf="i != breadcrumbs.length - 1">|</span>
+  </div>
+</div>

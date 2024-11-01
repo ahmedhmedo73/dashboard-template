@@ -1,0 +1,26 @@
+<div>
+  <label class="form-label w-100" [for]="control">
+    {{ label() | translate }}
+  </label>
+  <textarea
+    class="w-full bg-gray-2 h-auto"
+    [maxlength]="maxLength()"
+    [minlength]="minlength()"
+    [id]="control"
+    [formControl]="control"
+    [placeholder]="placeholder() | translate"
+    [class.is-invalid]="submitted() && control.touched && control.invalid"
+    [required]="required()"
+    [rows]="rows()"
+    [readOnly]="readonly()"
+    pInputTextarea
+  ></textarea>
+  <app-validation-messages
+    [errors]="
+      control.errors && (control.dirty || control.touched) ? control.errors : []
+    "
+    [patternMessage]="patternMessage() | translate"
+    [maxLength]="maxLength()"
+    [minLength]="minlength()"
+  ></app-validation-messages>
+</div>

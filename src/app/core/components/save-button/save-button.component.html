@@ -1,0 +1,26 @@
+<div class="flex gap-2">
+  <button
+    type="submit"
+    [disabled]="!formValid"
+    (click)="onSubmit()"
+    class="bg-main text-white flex gap-3 font-semibold p-3 rounded-md hover:opacity-80 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+  >
+    <div
+      *ngIf="isLoading; else saveBtn"
+      class="spinner-border spinner-border-sm"
+      role="status"
+    ></div>
+    <ng-template #saveBtn>
+      <img
+        class="ms-1"
+        src="img/icons/white-check-circle.svg"
+        alt="{{ 'BUTTONS.SAVE_DATA' | translate }}"
+      />
+      {{ "BUTTONS.SAVE_DATA" | translate }}
+    </ng-template>
+  </button>
+
+  <button type="button" class="btn-cancel border-0 p-0" (click)="onCancel()">
+    {{ "BUTTONS.CANCEL" | translate }}
+  </button>
+</div>

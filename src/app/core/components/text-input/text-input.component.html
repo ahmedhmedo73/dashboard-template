@@ -1,0 +1,43 @@
+<div>
+  <label class="form-label" [for]="control">
+    {{ label() | translate }}
+    @if (required()) {
+    <span class="text-danger">*</span>
+    }
+  </label>
+  <div class="input-container w-full" [ngClass]="containerStyleClass">
+    <input
+      class="form-control bg-gray-2"
+      [ngClass]="{ 'text-muted': !readonly }"
+      [id]="control"
+      [min]="min()"
+      [max]="max()"
+      [type]="type()"
+      [style]="style()"
+      [readonly]="readonly()"
+      [disabled]="disabled()"
+      [required]="required()"
+      [maxlength]="maxLength()"
+      [minlength]="minLength()"
+      [numbersOnly]="numbersOnly()"
+      [formControlName]="controlName()"
+      [appValidString]="appValidString()"
+      [placeholder]="placeholder() | translate"
+      [class.is-invalid]="submitted() && control.touched && control.invalid"
+      (keydown.enter)="onkeydownEnter.emit()"
+      appTextTrim
+    />
+    <app-validation-messages
+      [errors]="
+        control.errors && (control.dirty || control.touched)
+          ? control.errors
+          : []
+      "
+      [patternMessage]="patternMessage() | translate"
+      [minLength]="minLength()"
+      [maxLength]="maxLength()"
+      [label]="label() | translate"
+      [isNumbersOnly]="numbersOnly()"
+    ></app-validation-messages>
+  </div>
+</div>

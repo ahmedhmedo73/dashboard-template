@@ -1,0 +1,51 @@
+.btn {
+  --bs-btn-font-weight: bold !important;
+  --bs-btn-hover-color: white;
+  --bs-btn-active-color: white;
+  min-height: 48px;
+  &.btn-primary {
+    color: white !important;
+  }
+  &.btn-secondary {
+    color: white !important;
+    &[disabled] {
+      background-color: #dbdddf;
+      border-color: #dbdddf;
+      cursor: not-allowed !important;
+    }
+  }
+  &.btn-outline {
+    color: $light-primary !important;
+    border: 1px solid $light-primary;
+    margin-inline-start: 10px;
+  }
+  &.btn-rounded {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px !important;
+  }
+
+  &.btn-delete {
+    color: $delete;
+    border: none;
+    &:disabled,
+    .disabled,
+    &[disabled] {
+      cursor: not-allowed !important;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &.icon {
+    padding: 0 !important;
+    border: none;
+    cursor: pointer;
+  }
+
+  &.wide {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

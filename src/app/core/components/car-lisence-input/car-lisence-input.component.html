@@ -1,0 +1,53 @@
+<div class="form-group">
+  <label class="form-label" [for]="control">
+    {{ label }}
+    <span *ngIf="addRequiredAstrect" class="text-danger">*</span>
+  </label>
+  <div class="input-container w-100 flex flex-column align-items-start">
+    <p-inputOtp [formControl]="control" [length]="8">
+      <ng-template
+        pTemplate="input"
+        let-token
+        let-events="events"
+        let-index="index"
+      >
+        <input
+          *ngIf="index !== 8"
+          pInputText
+          [type]="index < 5 ? 'number' : 'text'"
+          [maxLength]="1"
+          (input)="events.input($event)"
+          (keydown)="events.keydown($event)"
+          [attr.value]="token"
+          class="form-control p-inputtext p-component p-element p-inputotp-input"
+          [numbersOnly]="index < 5"
+          [appArStringOnly]="index > 4"
+          (blur)="markAsTouched()"
+        />
+        <input
+          *ngIf="index == 8"
+          pInputText
+          [type]="'text'"
+          [maxLength]="0"
+          (input)="events.input($event)"
+          (keydown)="events.keydown($event)"
+          [attr.value]="token"
+          (blur)="markAsTouched()"
+          class="d-none"
+        />
+        <div *ngIf="index === 4" class="px-4"></div>
+      </ng-template>
+    </p-inputOtp>
+    <div
+      class="invalid-feedback flex gap-2"
+      *ngIf="control?.errors && (control?.dirty || control?.touched)"
+    >
+      <div [ngSwitch]="getFirstError(control.errors)">
+        <span *ngSwitchCase="'required'">{{ placeholder }} مطلوب</span>
+        <span *ngSwitchCase="'pattern'"
+          >يرجى كتابة {{ placeholder }} بطريقة صحيحة</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

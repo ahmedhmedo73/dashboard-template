@@ -1,0 +1,57 @@
+<div class="modal" id="reserveAppointment" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-body flex flex-column">
+        <p class="modal-title fw-bold text-secondary mb-4">اختر اليوم</p>
+        <form [formGroup]="form">
+          <app-date-input
+            [formControl]="$any(f['selectedDate'])"
+            label="اليوم"
+            [defaultDate]="minDate"
+            [minDate]="minDate"
+            [maxDate]="maxDate"
+            [disabledDates]="disabledDates"
+            placeholder="اليوم"
+          ></app-date-input>
+        </form>
+        <p
+          class="modal-title fw-bold text-secondary mt-3 mb-4"
+          *ngIf="duarationList.length > 0"
+        >
+          الفترة الزمنية
+        </p>
+        <div class="flex gap-3 mb-5" *ngIf="duarationList.length > 0">
+          <ng-container *ngFor="let duaration of duarationList">
+            <p-radioButton
+              name="duration"
+              inputId="duration1"
+              [value]="duaration"
+              [(ngModel)]="selectedSchedule"
+            ></p-radioButton>
+            <label for="duration1" class="ml-2">
+              {{ duaration.durationName }}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+      <div class="modal-footer flex gap-3 justify-content-between">
+        <button
+          type="button"
+          class="btn-cancel p-0 border-0 m-0"
+          data-bs-dismiss="modal"
+        >
+          عودة
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary flex gap-2 items-center m-0"
+          (click)="booking()"
+          [disabled]="!selectedSchedule || bookingIsLoading"
+        >
+          <img src="img/icons/white-check-circle.svg" alt="" />
+          تأكيد الموعد
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

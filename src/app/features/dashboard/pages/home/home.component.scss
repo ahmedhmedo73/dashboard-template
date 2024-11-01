@@ -1,0 +1,52 @@
+.active {
+  background-color: #e8ffed;
+  border: #e8dbb6 1px solid;
+  color: #28924f;
+  padding: 0 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+.page-title {
+  color: #535050;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px; /* 100% */
+}
+.currentElectionBox {
+  margin: 20px 0;
+  width: 100%;
+  max-width: 300px;
+  height: 157px;
+  border-radius: 20px;
+  background: #28924f;
+  padding: 20px;
+  color: #fff;
+  .currentElectionBox_top {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .currentElectionBox_bottom {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 100%;
+
+    .currentElectionBox_info {
+      margin-right: 24px;
+      align-items: center;
+      text-align: center;
+      .currentElectionBox_number {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+
+      .currentElectionBox_text {
+        font-size: 20px;
+      }
+    }
+  }
+}

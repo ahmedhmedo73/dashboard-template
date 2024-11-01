@@ -1,0 +1,15 @@
+@import "../../../../../public/styles/theme/";
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  &.with-border {
+    border-bottom: 1px solid $light-primary;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+}

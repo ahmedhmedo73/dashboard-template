@@ -1,0 +1,104 @@
+@import "../../../../public/styles/theme";
+
+.hamburger-menu {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0 15px;
+}
+
+.label-hamburger-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.label-hamburger-menu .bar {
+  width: 40px;
+  height: 4px;
+  background: #fff;
+  border-radius: 1px;
+  transition: 0.4s ease;
+}
+
+.label-hamburger-menu .bar:not(:first-child) {
+  margin-top: 5px;
+}
+
+#checkbox-hamburger-menu {
+  display: none;
+}
+
+#checkbox-hamburger-menu:checked + .label-hamburger-menu {
+  transform: translate(-50%, -50%) rotateY(180deg);
+}
+
+#checkbox-hamburger-menu:checked + .label-hamburger-menu .bar {
+  width: 30px;
+  transform: rotateY(180deg) rotateX(360deg);
+}
+
+#checkbox-hamburger-menu:checked + .label-hamburger-menu .bar:first-child {
+  transform: translateY(9px) rotate(-45deg);
+}
+
+#checkbox-hamburger-menu:checked + .label-hamburger-menu .bar:nth-child(2) {
+  opacity: 0;
+}
+
+#checkbox-hamburger-menu:checked + .label-hamburger-menu .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(45deg);
+}
+
+/* Home Section */
+.home-section {
+  position: relative;
+  // max-width: 1440px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 109px);
+  left: 150px;
+  margin-top: 110px;
+  width: calc(100% - 305px);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 23px 48px 3px 48px;
+  @media (max-width: $responsive-breakPoint) {
+    width: 100%;
+    right: 0;
+    overflow-x: unset;
+  }
+}
+
+.home-section .home-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-section .home-header .title {
+  color: white;
+  margin-right: 20px;
+  font-size: 35px;
+}
+
+.home-section .home-header .title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.home-section .home-view {
+  /* height: 100%; */
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}

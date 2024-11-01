@@ -1,0 +1,39 @@
+.page-item:last-child .page-link {
+  img {
+    rotate: 180deg;
+  }
+}
+
+.page-item {
+  &.disabled {
+    user-select: none;
+    cursor: not-allowed;
+  }
+}
+.page-link {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  margin-right: 8px;
+  color: $light;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.52px;
+  padding: unset!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #DBDDDF;
+  color: white;
+}
+
+.page-item:last-child .page-link,
+.page-item:first-child .page-link {
+  background-color: transparent;
+  border : unset;
+}
+.page-link.active {
+  background-color: $secondary;
+  border: unset;
+}

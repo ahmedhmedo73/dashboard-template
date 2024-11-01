@@ -1,0 +1,63 @@
+<div class="form-group">
+  <label class="form-label" [for]="controlName">
+    {{ label }}
+    <span *ngIf="addRequiredAstrect" class="text-danger">*</span>
+  </label>
+
+  <div class="input-group position-relative">
+    <label
+      tabindex="0"
+      [for]="controlName"
+      class="form-control form-control-file bg-gray-2"
+      [ngClass]="{
+        'is-invalid-input': typeErr || sizeErr || required,
+        disabled: disabled
+      }"
+      (click)="controlTouched = true"
+    >
+      <div class="flex justify-content-between">
+        <div class="flex flex-column">
+          <p class="m-0 title">{{ fileName || placeholder }}</p>
+          <p class="m-0 sub-title">
+            {{ "ملف واحد بحجم أقصى 1 ميجا بايت (Jpg, png, PDF)" }}
+          </p>
+        </div>
+        <img *ngIf="!fileName" src="img/icons/upload-04.svg" />
+      </div>
+      <input
+        type="file"
+        [id]="controlName"
+        [name]="controlName"
+        [disabled]="disabled"
+        [accept]="
+          imgOnly
+            ? allowedImgs.join()
+            : ['application/pdf'].concat(allowedImgs).join()
+        "
+        class="invisible position-absolute"
+        [(ngModel)]="fileInput"
+        (change)="change($event)"
+        [ngClass]="{
+          'is-invalid': required
+        }"
+      />
+    </label>
+    <img
+      *ngIf="fileName"
+      src="img/icons/trash.svg"
+      (click)="deleteFile($event)"
+      class="position-absolute delete-file-icon"
+    />
+  </div>
+</div>
+<div class="invalid-feedback" *ngIf="control?.errors && controlTouched">
+  <div [ngSwitch]="getFirstError(control.errors)">
+    <span *ngSwitchCase="'required'">الحقل مطلوب</span>
+    <span *ngSwitchCase="'type'">
+      الصيغ المسموح بها (JPG JPEG PNG {{ !imgOnly ? "PDF" : "" }})
+    </span>
+    <span *ngSwitchCase="'size'">
+      الحد المسموح به بحد أقصى ({{ maxFileSize }}MB)
+    </span>
+  </div>
+</div>
